@@ -18,7 +18,6 @@
   };
 
   programs.git.enable = lib.mkForce false;
-
   programs.zsh = {
     initExtra = '' 
 # Path
