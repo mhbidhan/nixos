@@ -76,7 +76,6 @@ in
       "networkmanager"
       "video"
     ];
-    shell = pkgs.zsh;
   };
 
   hydenix = {
