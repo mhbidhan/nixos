@@ -14,7 +14,6 @@
     python3
     nodejs
     go
-    tree-sitter
     lazygit
     tmux
     zip
