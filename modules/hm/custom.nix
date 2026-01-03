@@ -1,12 +1,6 @@
-{  pkgs, lib, ... }:
-
-{
+{lib, ...}: {
   home = {
     file = {
-      ".config/nvim" = {
-        source = ../../config/nvim;
-        recursive = true;
-      };
       ".config/zsh/.p10k.zsh" = {
         source = lib.mkForce ../../config/zsh/p10k.zsh;
       };
@@ -24,20 +18,20 @@
 
   programs.git.enable = lib.mkForce false;
   programs.zsh = {
-    initContent = '' 
-# Path
-export PATH="$HOME/.local/share/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/my-scripts:$PATH"
-export EDITOR=nvim
-export VISUAL=nvim
+    initContent = ''
+      # Path
+      export PATH="$HOME/.local/share/bin:$PATH"
+      export PATH="$HOME/.local/bin:$PATH"
+      export PATH="$HOME/my-scripts:$PATH"
+      export EDITOR=nvim
+      export VISUAL=nvim
 
-# KEY_BINDS
-bindkey '^@' autosuggest-accept
+      # KEY_BINDS
+      bindkey '^@' autosuggest-accept
 
-eval "$(fnm env --use-on-cd --shell zsh)"
+      eval "$(fnm env --use-on-cd --shell zsh)"
 
-source ~/.config/zsh/.p10k.zsh
-'';
+      source ~/.config/zsh/.p10k.zsh
+    '';
   };
 }

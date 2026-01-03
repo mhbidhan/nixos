@@ -1,18 +1,18 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./hosts.nix
   ];
 
   environment.systemPackages = with pkgs; [
+    tree
     gcc
     gnumake
+    nodejs
+    tree-sitter
     cargo
     rustc
-    rust-analyzer 
+    rust-analyzer
     python3
-    nodejs
     go
     lazygit
     tmux
@@ -22,5 +22,6 @@
     nodePackages.typescript
     nodePackages.prettier
     nodePackages.nodemon
+    ripgrep
   ];
 }

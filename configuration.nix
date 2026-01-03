@@ -2,8 +2,7 @@
   config,
   inputs,
   ...
-}:
-let
+}: let
   system = "x86_64-linux";
   pkgs = import inputs.nixpkgs {
     inherit system;
@@ -12,27 +11,30 @@ let
       inputs.hydenix.overlays.default
     ];
   };
-in
-{
-  nixpkgs.pkgs = pkgs; 
+in {
+  nixpkgs.pkgs = pkgs;
 
   imports = [
     inputs.hydenix.inputs.home-manager.nixosModules.home-manager
     inputs.hydenix.nixosModules.default
-    ./modules/system 
-    ./hardware-configuration.nix 
+    ./modules/system
+    ./hardware-configuration.nix
     # GPU Configuration (choose one):
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia # NVIDIA
+    inputs.nixos-hardware.nixosModules.common-hidpi # High-DPI displays
     # inputs.nixos-hardware.nixosModules.common-gpu-amd # AMD
     # CPU Configuration (choose one):
     inputs.nixos-hardware.nixosModules.common-cpu-amd # AMD CPUs
     # inputs.nixos-hardware.nixosModules.common-cpu-intel # Intel CPUs
-    # inputs.nixos-hardware.nixosModules.common-hidpi # High-DPI displays
     # inputs.nixos-hardware.nixosModules.common-pc-laptop # Laptops
     # inputs.nixos-hardware.nixosModules.common-pc-ssd # SSD storage
+
+    # Custom
+    ./config/config.nix
   ];
 
-  hardware = { cpu.amd.updateMicrocode = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true;
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = false;
@@ -44,11 +46,10 @@ in
         offload.enable = false;
         nvidiaBusId = "PCI:1:0:0";
       };
-
     };
 
     graphics = {
-      enable=true;
+      enable = true;
       enable32Bit = true;
     };
   };
@@ -56,15 +57,13 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users."bidhan" =
-      { ... }:
-      {
-        imports = [
-          inputs.hydenix.homeModules.default
-          ./modules/hm 
-        ];
-      };
+    extraSpecialArgs = {inherit inputs;};
+    users."bidhan" = {...}: {
+      imports = [
+        inputs.hydenix.homeModules.default
+        ./modules/hm
+      ];
+    };
     backupFileExtension = "backup";
   };
 
@@ -76,10 +75,11 @@ in
       "networkmanager"
       "video"
     ];
+    shell = pkgs.zsh;
   };
 
   hydenix = {
-    enable = true; 
+    enable = true;
     hostname = "nixos";
     timezone = "Asia/Dhaka";
     locale = "en_US.UTF-8";
@@ -87,7 +87,7 @@ in
     gaming.enable = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   system.stateVersion = "25.05";
 }
