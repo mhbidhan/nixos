@@ -23,6 +23,11 @@
     };
 
     snippets.luasnip.enable = true;
+    snippets.luasnip.setupOpts = {
+      paths = [
+        "${pkgs.vimPlugins.friendly-snippets}"
+      ];
+    };
 
     lsp = {
       enable = true;
@@ -30,9 +35,11 @@
       lightbulb.enable = true;
       servers.nixd.enable = true;
       lspconfig.enable = true;
+      null-ls.enable = true;
     };
 
     extraPackages = with pkgs; [
+      emmet-ls
       nixd
       gopls
       pyright
@@ -43,5 +50,21 @@
       nodePackages.vscode-langservers-extracted
       angular-language-server
     ];
+
+    luaConfigRC.emmet-ls = ''
+      require('lspconfig').emmet_ls.setup({
+        filetypes = {
+          "css", "eruby", "html", "javascript", "javascriptreact",
+          "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue"
+        },
+        init_options = {
+          html = {
+            options = {
+              ["bem.enabled"] = true,
+            },
+          },
+        }
+      })
+    '';
   };
 }
