@@ -1,19 +1,24 @@
-{pkgs, ...}: {
-  imports = [./custom.nix];
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [];
 
-  home.packages = with pkgs; [
-    google-chrome
-  ];
-
-  hydenix.hm = {
-    enable = true;
-    editors.neovim = false;
-    shell = {
-      enable = true;
-      zsh.enable = true;
-      p10k = {
-        enable = true;
+  home = {
+    file = {
+      ".config/zsh/.p10k.zsh" = {
+        source = lib.mkForce ../../config/zsh/p10k.zsh;
+      };
+      ".tmux.conf" = {
+        source = ../../config/tmux/.tmux.conf;
       };
     };
+
+    packages = with pkgs; [
+      google-chrome
+    ];
   };
+
+  programs.git.enable = lib.mkForce false;
 }
