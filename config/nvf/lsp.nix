@@ -35,7 +35,6 @@
       lightbulb.enable = true;
       servers.nixd.enable = true;
       lspconfig.enable = true;
-      null-ls.enable = true;
     };
 
     extraPackages = with pkgs; [
@@ -46,6 +45,7 @@
       rust-analyzer
       omnisharp-roslyn
       codeium
+      nodePackages.prettier
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       angular-language-server
@@ -54,7 +54,7 @@
     luaConfigRC.emmet-ls = ''
       require('lspconfig').emmet_ls.setup({
         filetypes = {
-          "css", "eruby", "html", "javascript", "javascriptreact",
+          "css", "eruby", "htmlangular,", "html", "javascript", "javascriptreact",
           "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue"
         },
         init_options = {
