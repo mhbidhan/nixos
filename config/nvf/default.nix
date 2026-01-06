@@ -7,6 +7,7 @@
     ./neo-tree.nix
     ./telescope.nix
     ./lsp.nix
+    ./formatter.nix
     ./theme.nix
     ./harpoon.nix
     ./aerial.nix
