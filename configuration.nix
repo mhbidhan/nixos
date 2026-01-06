@@ -62,6 +62,7 @@ in {
       imports = [
         inputs.hydenix.homeModules.default
         ./modules/hm
+        ./modules/hydenix
       ];
     };
     backupFileExtension = "backup";
