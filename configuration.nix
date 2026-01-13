@@ -33,7 +33,11 @@ in {
     ./modules/pde
   ];
 
-  boot.kernelParams = ["video=DP-4:e"];
+  boot.kernelParams = [
+    "video=DP-5:1920x1080@60,0+0"
+    "video=DP-4:1920x1080@60,0+1080"
+    "video=HDMI-A-2:1920x1080@60,1920+0,reflect_x"
+  ];
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -90,14 +94,6 @@ in {
     gaming.enable = true;
   };
 
-  services.displayManager.sddm = {
-    wayland.enable = true;
-    settings = {
-      Wayland = {
-        CompositorCommand = "${pkgs.hyprland}/bin/Hyprland";
-      };
-    };
-  };
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   system.stateVersion = "25.05";
