@@ -15,6 +15,9 @@ _: {
       export PATH="$HOME/my-scripts:$PATH"
       export EDITOR=nvim
       export VISUAL=nvim
+      export GOPATH=$HOME/go
+      export ATAC_KEY_BINDINGS=$HOME/.config/atac/key_bindings.toml
+      export PATH="$PATH:$(go env GOPATH)/bin"
 
       # KEY_BINDS
       bindkey '^@' autosuggest-accept

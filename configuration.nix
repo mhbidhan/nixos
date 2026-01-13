@@ -30,8 +30,10 @@ in {
     # inputs.nixos-hardware.nixosModules.common-pc-ssd # SSD storage
 
     # Custom
-    ./config/config.nix
+    ./modules/pde
   ];
+
+  boot.kernelParams = ["video=DP-4:e"];
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -88,6 +90,14 @@ in {
     gaming.enable = true;
   };
 
+  services.displayManager.sddm = {
+    wayland.enable = true;
+    settings = {
+      Wayland = {
+        CompositorCommand = "${pkgs.hyprland}/bin/Hyprland";
+      };
+    };
+  };
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   system.stateVersion = "25.05";
