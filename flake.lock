@@ -19,6 +19,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "neovim-flake",
           "nvf",
           "nixpkgs"
         ]
@@ -223,6 +224,7 @@
     "ndg": {
       "inputs": {
         "nixpkgs": [
+          "neovim-flake",
           "nvf",
           "nixpkgs"
         ]
@@ -238,6 +240,25 @@
       "original": {
         "owner": "feel-co",
         "repo": "ndg",
+        "type": "github"
+      }
+    },
+    "neovim-flake": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "nvf": "nvf"
+      },
+      "locked": {
+        "lastModified": 1767932218,
+        "narHash": "sha256-+kxAvFTHI2eXnQFvVhzGN95yaPKTGnbBBczXu7X2CaU=",
+        "owner": "mhbidhan",
+        "repo": "neovim-flake",
+        "rev": "685da10d57ee56e614f4c549fb8c2ae2dedc80ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mhbidhan",
+        "repo": "neovim-flake",
         "type": "github"
       }
     },
@@ -328,6 +349,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1767767207,
+        "narHash": "sha256-Mj3d3PfwltLmukFal5i3fFt27L6NiKXdBezC1EBuZs4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5912c1772a44e31bf1c63c0390b90501e5026886",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1766902085,
         "narHash": "sha256-coBu0ONtFzlwwVBzmjacUQwj3G+lybcZ1oeNSQkgC0M=",
         "owner": "nixos",
@@ -349,16 +386,17 @@
         "mnw": "mnw",
         "ndg": "ndg",
         "nixpkgs": [
+          "neovim-flake",
           "nixpkgs"
         ],
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1767123832,
-        "narHash": "sha256-WI+DaMQLJ/QVUKCNk1gvo8y0Rw6C4uDx8BW1mRVVOMU=",
+        "lastModified": 1767905953,
+        "narHash": "sha256-Bv2aFymqUptre+n5JxR0FFxhD1ZTu13IyQtOvUNDPRg=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "0390abd6736ff34a016afc66366d1f46372f28de",
+        "rev": "328e096c8bb70cd3aa5da9ebec934b06f5a7869e",
         "type": "github"
       },
       "original": {
@@ -370,9 +408,9 @@
     "root": {
       "inputs": {
         "hydenix": "hydenix",
+        "neovim-flake": "neovim-flake",
         "nixos-hardware": "nixos-hardware_2",
-        "nixpkgs": "nixpkgs_3",
-        "nvf": "nvf"
+        "nixpkgs": "nixpkgs_4"
       }
     },
     "rust-overlay": {

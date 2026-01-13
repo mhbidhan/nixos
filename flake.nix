@@ -7,26 +7,20 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     # Extras
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    neovim-flake.url = "github:mhbidhan/neovim-flake";
     hydenix = {
       url = "github:richen604/hydenix";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {nvf, ...} @ inputs: let
+  outputs = {nixpkgs, ...} @ inputs: let
     system = "x86_64-linux";
-    hydenixConfig = inputs.nixpkgs.lib.nixosSystem {
+    hydenixConfig = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {
-        inherit inputs;
-      };
-      modules = [
-        nvf.nixosModules.default
+      specialArgs = {inherit inputs;};
 
+      modules = [
+        # ONLY your NixOS configuration files go here
         ./configuration.nix
       ];
     };

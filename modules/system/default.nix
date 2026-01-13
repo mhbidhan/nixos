@@ -1,9 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hosts.nix
   ];
 
   environment.systemPackages = with pkgs; [
+    inputs.neovim-flake.packages.${system}.default
     tree
     gcc
     gnumake
@@ -18,10 +23,14 @@
     tmux
     zip
     unzip
+    air
     fnm
     nodePackages.typescript
     nodePackages.prettier
     nodePackages.nodemon
     ripgrep
+    postman
+    mongodb
+    mongosh
   ];
 }
