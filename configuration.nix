@@ -37,13 +37,15 @@ in {
     "video=DP-5:1920x1080@60,0+0"
     "video=DP-4:1920x1080@60,0+1080"
     "video=HDMI-A-2:1920x1080@60,1920+0,reflect_x"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
   hardware = {
     cpu.amd.updateMicrocode = true;
     nvidia = {
       modesetting.enable = true;
-      powerManagement.enable = false;
+      powerManagement.enable = true;
+      powerManagement.finegrained = false;
       open = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -57,6 +59,22 @@ in {
     graphics = {
       enable = true;
       enable32Bit = true;
+    };
+  };
+
+  systemd.services.fix-hibernate-wakeup = {
+    description = "Disable all ACPI wake triggers except Keyboard/Mouse and Power Button";
+    after = ["multi-user.target"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c ' \
+      ${pkgs.gawk}/bin/awk \"/enabled/ && !/XHC0|XHC1|PWRB|PBTN/ {print \\$1}\" /proc/acpi/wakeup | while read -r device; do \
+        echo \"Disabling $device...\"; \
+        echo \"$device\" > /proc/acpi/wakeup; \
+      done \
+    '";
+      RemainAfterExit = "yes";
     };
   };
 

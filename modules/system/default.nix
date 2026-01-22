@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     inputs.neovim-flake.packages.${system}.default
+    gemini-cli
     tree
     gcc
     gnumake
@@ -33,5 +34,8 @@
     postman
     mongodb
     mongosh
+    vi-mongo
+    vlc
+    bottles
   ];
 }
