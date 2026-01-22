@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./editors.nix
+    ./hypridle.nix
     ./keybinds.nix
     ./monitors.nix
     ./shell.nix
