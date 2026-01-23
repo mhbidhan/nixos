@@ -10,7 +10,6 @@
 
   environment.systemPackages = with pkgs; [
     inputs.neovim-flake.packages.${system}.default
-    gemini-cli
     tree
     gcc
     gnumake
@@ -30,6 +29,7 @@
     nodePackages.typescript
     nodePackages.prettier
     nodePackages.nodemon
+    nodePackages.http-server
     ripgrep
     postman
     mongodb

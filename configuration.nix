@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   ...
 }: let
   system = "x86_64-linux";
@@ -101,6 +102,12 @@ in {
       "video"
     ];
     shell = pkgs.zsh;
+  };
+
+  # Temporary version lock
+  programs.hyprland = {
+    package = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   hydenix = {
