@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./hosts.nix
-    ./sddm.nix
   ];
 
   environment.systemPackages = with pkgs; [
