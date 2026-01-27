@@ -36,6 +36,6 @@
     mongosh
     vi-mongo
     vlc
-    bottles
+    gemini-cli
   ];
 }
