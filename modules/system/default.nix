@@ -37,5 +37,6 @@
     vi-mongo
     vlc
     gemini-cli
+    opencode
   ];
 }
