@@ -32,6 +32,12 @@
     fsType = "ext4";
   };
 
+  fileSystems."/home/bidhan/games" = {
+    device = "/games";
+    fsType = "none";
+    options = ["bind"];
+  };
+
   swapDevices = [
     {device = "/dev/disk/by-uuid/7169ec40-d0ed-4d37-9f39-92d5fa0a1671";}
   ];
