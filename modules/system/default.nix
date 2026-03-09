@@ -38,5 +38,9 @@
     vlc
     gemini-cli
     opencode
+    gh
+    gh-dash
+    delta
+    diffnav
   ];
 }
