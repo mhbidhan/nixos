@@ -32,6 +32,7 @@ in {
 
     # Custom
     ./modules/pde
+    ./modules/gaming
   ];
 
   boot.kernelParams = [
