@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  lib,
   ...
 }: let
   system = "x86_64-linux";
@@ -10,6 +9,9 @@
     config.allowUnfree = true;
     overlays = [
       inputs.hydenix.overlays.default
+      (_: super: {
+        swww = super.awww;
+      })
     ];
   };
 in {
@@ -90,6 +92,9 @@ in {
         ./modules/hm
         ./modules/hydenix
       ];
+      home.packages = with pkgs; [
+        awww # renamed from swww
+      ];
     };
     backupFileExtension = "backup";
   };
@@ -105,11 +110,11 @@ in {
     shell = pkgs.zsh;
   };
 
-  # Temporary version lock
-  programs.hyprland = {
-    package = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
+  # # Temporary version lock
+  # programs.hyprland = {
+  #   package = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  #   portalPackage = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  # };
 
   hydenix = {
     enable = true;

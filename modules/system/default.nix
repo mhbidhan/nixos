@@ -26,10 +26,10 @@
     unzip
     air
     fnm
-    nodePackages.typescript
-    nodePackages.prettier
-    nodePackages.nodemon
-    nodePackages.http-server
+    typescript
+    prettier
+    nodemon
+    http-server
     ripgrep
     postman
     mongodb
@@ -42,5 +42,7 @@
     gh-dash
     delta
     diffnav
+    docker
+    docker-compose
   ];
 }
