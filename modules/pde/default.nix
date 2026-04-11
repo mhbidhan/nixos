@@ -1,4 +1,4 @@
 _: {
   services.mongodb.enable = true;
-  services.redis.enable = true;
+  services.redis.servers."".enable = true;
 }
