@@ -21,6 +21,7 @@
     python3
     go
     lazygit
+    lazydocker
     tmux
     zip
     unzip
@@ -44,5 +45,6 @@
     diffnav
     docker
     docker-compose
+    ollama-cuda
   ];
 }
