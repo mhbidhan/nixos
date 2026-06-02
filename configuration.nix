@@ -106,15 +106,10 @@ in {
       "wheel"
       "networkmanager"
       "video"
+      "docker"
     ];
     shell = pkgs.zsh;
   };
-
-  # # Temporary version lock
-  # programs.hyprland = {
-  #   package = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  #   portalPackage = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  # };
 
   hydenix = {
     enable = true;
