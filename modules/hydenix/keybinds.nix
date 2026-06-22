@@ -74,10 +74,6 @@ _: {
       binddm = $mainMod, Z, $d hold to move window , movewindow
       binddm = $mainMod, X, $d hold to resize window, resizewindow
 
-      # Toggle focused window split
-      $d=[$wm]
-      bindd = $mainMod, J, $d toggle split, togglesplit
-
       $l=Launcher
       $d=[$l|Apps]
       bindd = $mainMod, T, $d terminal emulator , exec, $TERMINAL

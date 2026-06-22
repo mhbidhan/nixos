@@ -19,6 +19,10 @@ _: {
       export ATAC_KEY_BINDINGS=$HOME/.config/atac/key_bindings.toml
       export PATH="$PATH:$(go env GOPATH)/bin"
 
+      # Aliases
+      alias lgit="lazygit"
+      alias ldocker="lazydocker"
+
       # KEY_BINDS
       bindkey '^@' autosuggest-accept
 
