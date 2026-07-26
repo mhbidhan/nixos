@@ -1,14 +1,13 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
+{inputs, ...}: let
   system = "x86_64-linux";
   pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
     overlays = [
       inputs.hydenix.overlays.default
+      (_: super: {
+        swww = super.awww;
+      })
     ];
   };
 in {
@@ -75,6 +74,9 @@ in {
         ./modules/hm
         ./modules/hydenix
       ];
+      home.packages = with pkgs; [
+        awww # renamed from swww
+      ];
     };
     backupFileExtension = "backup";
   };
@@ -86,15 +88,10 @@ in {
       "wheel"
       "networkmanager"
       "video"
+      "docker"
+      "libvirtd"
     ];
     shell = pkgs.zsh;
-  };
-
-  # Hyprland Version Lock
-  programs.hyprland = {
-    enable = true;
-    package = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = lib.mkForce inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   hydenix = {

@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hosts.nix
+    ./sddm.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -20,17 +21,19 @@
     python3
     go
     lazygit
+    lazydocker
     tmux
     zip
     unzip
     air
     fnm
-    nodePackages.typescript
-    nodePackages.prettier
-    nodePackages.nodemon
-    nodePackages.http-server
+    typescript
+    prettier
+    nodemon
+    http-server
     ripgrep
     postman
+    insomnia
     mongodb
     mongosh
     vi-mongo
@@ -41,5 +44,18 @@
     gh-dash
     delta
     diffnav
+    docker
+    docker-compose
+    ollama-cuda
+    caddy
+    dotnet-sdk
+    heroic-unwrapped
+    htop
+    mongodb-tools
+    ookla-speedtest
+    openssl
+    tldr
+    yazi
+    obsidian
   ];
 }
