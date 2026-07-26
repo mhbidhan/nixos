@@ -14,5 +14,15 @@
       '';
     };
   };
-  virtualisation.docker.enable = true;
+
+  virtualisation = {
+    docker.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+      };
+    };
+  };
 }

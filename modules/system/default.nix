@@ -33,6 +33,7 @@
     http-server
     ripgrep
     postman
+    insomnia
     mongodb
     mongosh
     vi-mongo
@@ -55,5 +56,6 @@
     openssl
     tldr
     yazi
+    obsidian
   ];
 }

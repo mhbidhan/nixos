@@ -107,6 +107,7 @@ in {
       "networkmanager"
       "video"
       "docker"
+      "libvirtd"
     ];
     shell = pkgs.zsh;
   };
