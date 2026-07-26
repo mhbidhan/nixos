@@ -8,11 +8,7 @@
 
     # Extras
     neovim-flake.url = "github:mhbidhan/neovim-flake";
-    hyprland.url = "github:hyprwm/Hyprland/386376400119dd46a767c9f8c8791fd22c7b6e61";
-    hydenix = {
-      url = "github:richen604/hydenix";
-      inputs.hyprland.follows = "hyprland";
-    };
+    hydenix.url = "github:richen604/hydenix";
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
