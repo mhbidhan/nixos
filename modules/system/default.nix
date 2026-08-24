@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hosts.nix
+    ./linker.nix
     ./sddm.nix
   ];
 
