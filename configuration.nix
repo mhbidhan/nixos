@@ -92,9 +92,12 @@ in {
         ./modules/hm
         ./modules/hydenix
       ];
-      home.packages = with pkgs; [
-        awww # renamed from swww
-      ];
+      home = {
+        enableNixpkgsReleaseCheck = false;
+        packages = with pkgs; [
+          awww # renamed from swww
+        ];
+      };
     };
     backupFileExtension = "backup";
   };
