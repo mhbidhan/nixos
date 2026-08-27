@@ -10,7 +10,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    inputs.neovim-flake.packages.${system}.default
+    inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     tree
     gcc
     gnumake
