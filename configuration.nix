@@ -11,6 +11,21 @@
       inputs.hydenix.overlays.default
       (_: super: {
         swww = super.awww;
+        # hydenix fetches this from HyDE master where it was deleted (404);
+        # use the nixpkgs-maintained package which ships the same
+        # share/icons/Bibata-Modern-Ice theme.
+        Bibata-Modern-Ice = super.bibata-cursors;
+        # Hyprland 0.55+ removed the dwindle.pseudotile option; the upstream
+        # HyDE defaults.conf still sets it and errors. Replace it with our
+        # local copy (no dwindle block). This also sidesteps the pinned
+        # home-manager, where a recursive directory entry always beats a
+        # per-file override.
+        hyde = super.hyde.overrideAttrs (old: {
+          buildPhase = old.buildPhase + ''
+            cp ${./modules/configs/local.share.defaults.conf} Configs/.local/share/hypr/defaults.conf
+            cp ${./modules/configs/local.windowrules.conf} Configs/.local/share/hypr/windowrules.conf
+          '';
+        });
       })
     ];
   };
@@ -109,7 +124,7 @@ in {
       "wheel"
       "networkmanager"
       "video"
-      "docker"
+      "podman"
       "libvirtd"
     ];
     shell = pkgs.zsh;
