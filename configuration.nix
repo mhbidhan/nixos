@@ -24,6 +24,10 @@
           buildPhase = old.buildPhase + ''
             cp ${./modules/configs/local.share.defaults.conf} Configs/.local/share/hypr/defaults.conf
             cp ${./modules/configs/local.windowrules.conf} Configs/.local/share/hypr/windowrules.conf
+            # cpuinfo.sh join("\\n\t") emits a literal tab (invalid inside a
+            # JSON tooltip string), making waybar's custom/cpuinfo JSON fail
+            # with "Control character in string". Escape it as \\n\\t.
+            sed -i 's/join("\\\\n\\t")/join("\\\\n\\\\t")/' Configs/.local/lib/hyde/cpuinfo.sh
           '';
         });
       })
@@ -111,6 +115,7 @@ in {
         enableNixpkgsReleaseCheck = false;
         packages = with pkgs; [
           awww # renamed from swww
+          hyprsunset # hyde darkmode/temp daemon; GC-safe-install so it survives nix-collect-garbage
         ];
       };
     };
@@ -124,7 +129,7 @@ in {
       "wheel"
       "networkmanager"
       "video"
-      "podman"
+      "docker"
       "libvirtd"
     ];
     shell = pkgs.zsh;

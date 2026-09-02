@@ -1,7 +1,11 @@
 {pkgs, ...}: {
+  imports = [
+    ./caddy.nix
+    ./nomad.nix
+  ];
+
   services = {
     mongodb.enable = true;
-    redis.servers."".enable = true;
     postgresql = {
       enable = true;
       package = pkgs.postgresql_16;
@@ -16,7 +20,10 @@
   };
 
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      enableOnBoot = false;
+    };
     libvirtd = {
       enable = true;
       qemu = {

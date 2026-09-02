@@ -8,7 +8,6 @@
     ./linker.nix
     ./sddm.nix
   ];
-
   environment.systemPackages = with pkgs; [
     inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     tree
@@ -48,7 +47,6 @@
     docker
     docker-compose
     ollama-cuda
-    caddy
     dotnet-sdk
     heroic-unwrapped
     htop
@@ -58,5 +56,7 @@
     tldr
     yazi
     obsidian
+    dnsutils
+    cloudflare-warp
   ];
 }
