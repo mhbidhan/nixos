@@ -103,7 +103,7 @@ in {
     timezone = "Asia/Dhaka";
     locale = "en_US.UTF-8";
     audio.enable = true;
-    gaming.enable = true;
+    gaming.enable = false;
   };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
