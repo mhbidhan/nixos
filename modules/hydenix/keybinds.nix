@@ -74,10 +74,6 @@ _: {
       binddm = $mainMod, Z, $d hold to move window , movewindow
       binddm = $mainMod, X, $d hold to resize window, resizewindow
 
-      # Toggle focused window split
-      $d=[$wm]
-      bindd = $mainMod, J, $d toggle split, togglesplit
-
       $l=Launcher
       $d=[$l|Apps]
       bindd = $mainMod, T, $d terminal emulator , exec, $TERMINAL
@@ -124,8 +120,6 @@ _: {
       $ut=Utilities
       $d=[$ut]
       binddl = $mainMod, K, $d toggle keyboard layout , exec, $scrPath/keyboardswitch.sh # switch keyboard layout
-      bindd = $mainMod Alt, G, $d game mode , exec, $scrPath/gamemode.sh # disable hypr effects for gamemode
-      bindd = $mainMod Shift, G, $d open game launcher , exec, $scrPath/gamelauncher.sh # run game launcher for steam and lutris
 
       $d=[$ut|Screen Capture]
       bindd = $mainMod Shift, P, $d color picker, exec, hyprpicker -an # Pick color (Hex) >> clipboard#

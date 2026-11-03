@@ -5,10 +5,10 @@
 }: {
   imports = [
     ./hosts.nix
+    ./linker.nix
   ];
-
   environment.systemPackages = with pkgs; [
-    inputs.neovim-flake.packages.${system}.default
+    inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     tree
     gcc
     gnumake
@@ -20,22 +20,45 @@
     python3
     go
     lazygit
+    lazydocker
+    lazysql
+    vi-mongo
     tmux
     zip
     unzip
     air
     fnm
-    nodePackages.typescript
-    nodePackages.prettier
-    nodePackages.nodemon
-    nodePackages.http-server
+    typescript
+    prettier
+    nodemon
+    http-server
     ripgrep
     postman
+    openjdk
+    insomnia
     mongodb
     mongosh
-    vi-mongo
     vlc
     gemini-cli
     opencode
+    gh
+    git-filter-repo
+    gh-dash
+    delta
+    diffnav
+    docker
+    docker-compose
+    ollama-cuda
+    dotnet-sdk
+    unrar
+    htop
+    mongodb-tools
+    ookla-speedtest
+    openssl
+    tldr
+    yazi
+    obsidian
+    dnsutils
+    cloudflare-warp
   ];
 }

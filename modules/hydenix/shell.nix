@@ -18,6 +18,14 @@ _: {
       export GOPATH=$HOME/go
       export ATAC_KEY_BINDINGS=$HOME/.config/atac/key_bindings.toml
       export PATH="$PATH:$(go env GOPATH)/bin"
+      export DOCKER_HOST="unix:///var/run/docker.sock"
+
+      # Aliases
+      alias lgit="lazygit"
+      alias ldocker="lazydocker"
+      alias hostfile="cat ~/hosts | sudo tee /etc/hosts > /dev/null"
+
+
 
       # KEY_BINDS
       bindkey '^@' autosuggest-accept

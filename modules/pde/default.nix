@@ -1,4 +1,40 @@
-_: {
-  services.mongodb.enable = true;
-  services.redis.enable = true;
+{pkgs, ...}: {
+  imports = [
+    ./caddy.nix
+    ./keybase.nix
+    ./nomad.nix
+    ./wireshark.nix
+  ];
+
+  services = {
+    mongodb = {
+      enable = true;
+      bind_ip = "0.0.0.0";
+    };
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_16;
+
+      authentication = pkgs.lib.mkOverride 10 ''
+        # type database  user  address     auth-method
+        local  all       all               trust
+        host   all       all   127.0.0.1/32  trust
+        host   all       all   ::1/128       trust
+      '';
+    };
+  };
+
+  virtualisation = {
+    docker = {
+      enable = true;
+      enableOnBoot = false;
+    };
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+      };
+    };
+  };
 }
