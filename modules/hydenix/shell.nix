@@ -23,6 +23,9 @@ _: {
       # Aliases
       alias lgit="lazygit"
       alias ldocker="lazydocker"
+      alias hostfile="cat ~/hosts | sudo tee /etc/hosts > /dev/null"
+
+
 
       # KEY_BINDS
       bindkey '^@' autosuggest-accept

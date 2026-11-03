@@ -22,6 +22,8 @@
     go
     lazygit
     lazydocker
+    lazysql
+    vi-mongo
     tmux
     zip
     unzip
@@ -33,14 +35,15 @@
     http-server
     ripgrep
     postman
+    openjdk
     insomnia
     mongodb
     mongosh
-    vi-mongo
     vlc
     gemini-cli
     opencode
     gh
+    git-filter-repo
     gh-dash
     delta
     diffnav
@@ -49,6 +52,7 @@
     ollama-cuda
     dotnet-sdk
     heroic-unwrapped
+    unrar
     htop
     mongodb-tools
     ookla-speedtest
@@ -58,5 +62,6 @@
     obsidian
     dnsutils
     cloudflare-warp
+    protontricks
   ];
 }

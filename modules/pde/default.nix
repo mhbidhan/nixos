@@ -1,11 +1,16 @@
 {pkgs, ...}: {
   imports = [
     ./caddy.nix
+    ./keybase.nix
     ./nomad.nix
+    ./wireshark.nix
   ];
 
   services = {
-    mongodb.enable = true;
+    mongodb = {
+      enable = true;
+      bind_ip = "0.0.0.0";
+    };
     postgresql = {
       enable = true;
       package = pkgs.postgresql_16;

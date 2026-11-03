@@ -21,14 +21,16 @@
         # home-manager, where a recursive directory entry always beats a
         # per-file override.
         hyde = super.hyde.overrideAttrs (old: {
-          buildPhase = old.buildPhase + ''
-            cp ${./modules/configs/local.share.defaults.conf} Configs/.local/share/hypr/defaults.conf
-            cp ${./modules/configs/local.windowrules.conf} Configs/.local/share/hypr/windowrules.conf
-            # cpuinfo.sh join("\\n\t") emits a literal tab (invalid inside a
-            # JSON tooltip string), making waybar's custom/cpuinfo JSON fail
-            # with "Control character in string". Escape it as \\n\\t.
-            sed -i 's/join("\\\\n\\t")/join("\\\\n\\\\t")/' Configs/.local/lib/hyde/cpuinfo.sh
-          '';
+          buildPhase =
+            old.buildPhase
+            + ''
+              cp ${./modules/configs/local.share.defaults.conf} Configs/.local/share/hypr/defaults.conf
+              cp ${./modules/configs/local.windowrules.conf} Configs/.local/share/hypr/windowrules.conf
+              # cpuinfo.sh join("\\n\t") emits a literal tab (invalid inside a
+              # JSON tooltip string), making waybar's custom/cpuinfo JSON fail
+              # with "Control character in string". Escape it as \\n\\t.
+              sed -i 's/join("\\\\n\\t")/join("\\\\n\\\\t")/' Configs/.local/lib/hyde/cpuinfo.sh
+            '';
         });
       })
     ];
@@ -57,9 +59,9 @@ in {
   ];
 
   boot.kernelParams = [
-    "video=DP-5:1920x1080@60,0+0"
-    "video=DP-4:1920x1080@60,0+1080"
-    "video=HDMI-A-2:1920x1080@60,1920+0,reflect_x"
+    "video=DP-1:1920x1080@60,0+0"
+    "video=DP-2:1920x1080@60,0+1080"
+    "video=HDMI-A-1:1920x1080@60,1920+0,reflect_x"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
@@ -144,7 +146,10 @@ in {
     gaming.enable = true;
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "25.05";
 }
